@@ -1,6 +1,9 @@
 package calculator;
 
+import scala.Int;
+
 import java.util.*;
+import java.util.function.BiFunction;
 
 public class Calculator {
     private List<Integer> numbers = new LinkedList<>();
@@ -12,12 +15,16 @@ public class Calculator {
         }
     }
 
-    public void add(){
-        if (numbers.size() != 2){
+    private void operate(BiFunction<Integer, Integer, Integer> op) {
+        if (numbers.size() != 2) {
             throw new IllegalStateException();
         }
-        numbers.set(0, numbers.get(0) + numbers.get(1));
+        numbers.set(0, op.apply(numbers.get(0), numbers.get(1)));
         numbers.remove(1);
+    }
+
+    public void add(){
+        operate(Integer::sum);
     }
 
     public int getResult(){
@@ -25,5 +32,13 @@ public class Calculator {
             throw new IllegalStateException();
         }
         return numbers.get(0);
+    }
+
+    public void multiply() {
+        operate((a, b) -> a * b);
+    }
+
+    public void divide() {
+        operate((a, b) -> a / b);
     }
 }
