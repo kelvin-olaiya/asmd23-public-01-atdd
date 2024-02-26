@@ -39,4 +39,8 @@ public class Calculator {
     public void divide() {
         operate((a, b) -> a / b);
     }
+
+    public void subtract() {
+        operate((a, b) -> a - b);
+    }
 }
