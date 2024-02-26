@@ -1,12 +1,10 @@
 package calculator;
 
-import scala.Int;
-
 import java.util.*;
 import java.util.function.BiFunction;
 
 public class Calculator {
-    private List<Integer> numbers = new LinkedList<>();
+    private final List<Integer> numbers = new LinkedList<>();
 
     public void enter(int i){
         numbers.add(i);
